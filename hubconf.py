@@ -40,7 +40,7 @@ class DeepSqueeze_(nn.Module):
 def DeepSqueeze(pretrained=False, **kwargs):
     model = DeepSqueeze_(35)
 
-    checkpoint = 'https://github.com/Sid1057/self-driving-cars-utils/blob/master/semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth'
+    checkpoint = 'https://github.com/Sid1057/self-driving-cars-utils/blob/master/semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth?raw=true'
     model.load_state_dict(hub.load_state_dict_from_url(checkpoint, progress=False))
 
     return model
