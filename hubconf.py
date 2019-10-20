@@ -5,11 +5,14 @@ from torchvision.models._utils import IntermediateLayerGetter
 import torchvision.models.resnet as resnet
 
 from torch.nn import functional as F
+import os
 
 from collections import OrderedDict
 from torchvision.models.segmentation.deeplabv3 import DeepLabHead
 from torch import nn, hub
 from torchvision.models.squeezenet import squeezenet1_1
+import torch
+import torchvision
 
 squeeze = squeezenet1_1(pretrained=False).eval()
 
@@ -40,7 +43,9 @@ class DeepSqueeze_(nn.Module):
 def DeepSqueeze(pretrained=False, **kwargs):
     model = DeepSqueeze_(35)
 
-    checkpoint = 'https://github.com/Sid1057/self-driving-cars-utils/blob/master/semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth?raw=true'
-    model.load_state_dict(hub.load_state_dict_from_url(checkpoint, progress=False))
+    dirname = os.path.dirname(__file__)
+    checkpoint = os.path.join(dirname, 'semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth')
+    state_dict = torch.load(checkpoint)
+    model.load_state_dict(state_dict)
 
     return model
