@@ -1,4 +1,4 @@
-ependencies = ['torch']
+ependencies = ['torch', 'torchvision']
 
 #from .semantic.DeepSqueeze.models import DeepSqueeze as DeepSqueeze_
 from torchvision.models._utils import IntermediateLayerGetter
