@@ -15,7 +15,7 @@ squeeze = squeezenet1_1(pretrained=False).eval()
 
 class DeepSqueeze_(nn.Module):
     def __init__(self, num_classes):
-        super(DeepSqueeze, self).__init__()
+        super(DeepSqueeze_, self).__init__()
         backbone = squeeze.features
 
         classifier = DeepLabHead(512, num_classes)
