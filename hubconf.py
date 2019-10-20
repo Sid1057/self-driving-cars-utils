@@ -41,7 +41,7 @@ class DeepSqueeze_(nn.Module):
 
 # resnet18 is the name of entrypoint
 def DeepSqueeze(pretrained=False, **kwargs):
-    model = DeepSqueeze_(35)
+    model = DeepSqueeze_(35).cuda()
 
     dirname = os.path.dirname(__file__)
     checkpoint = os.path.join(dirname, 'semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth')
