@@ -41,11 +41,11 @@ class DeepSqueeze_(nn.Module):
 
 # resnet18 is the name of entrypoint
 def DeepSqueeze(pretrained=False, **kwargs):
-    model = DeepSqueeze_(35).cuda()
+    model = DeepSqueeze_(35)
 
     dirname = os.path.dirname(__file__)
     checkpoint = os.path.join(dirname, 'semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth')
-    state_dict = torch.load(checkpoint)
+    state_dict = torch.load(checkpoint, map_location='cpu')
     model.load_state_dict(state_dict)
 
     return model
