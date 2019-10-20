@@ -8,12 +8,12 @@ from torch.nn import functional as F
 
 from collections import OrderedDict
 from torchvision.models.segmentation.deeplabv3 import DeepLabHead
-import torch
-import torchvision
+from torch import nn
+from torchvision.models.squeezenet import squeezenet1_1
 
-squeeze = torchvision.models.squeezenet.squeezenet1_1(pretrained=True).eval()
+squeeze = squeezenet1_1(pretrained=False).eval()
 
-class DeepSqueeze_(torch.nn.Module):
+class DeepSqueeze_(nn.Module):
     def __init__(self, num_classes):
         super(DeepSqueeze, self).__init__()
         backbone = squeeze.features
