@@ -8,6 +8,7 @@ from torch.nn import functional as F
 
 from collections import OrderedDict
 from torchvision.models.segmentation.deeplabv3 import DeepLabHead
+import torchvision
 
 squeeze = torchvision.models.squeezenet.squeezenet1_1(pretrained=True).eval()
 
