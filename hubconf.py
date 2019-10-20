@@ -8,7 +8,7 @@ from torch.nn import functional as F
 
 from collections import OrderedDict
 from torchvision.models.segmentation.deeplabv3 import DeepLabHead
-from torch import nn
+from torch import nn, hub
 from torchvision.models.squeezenet import squeezenet1_1
 
 squeeze = squeezenet1_1(pretrained=False).eval()
@@ -41,6 +41,6 @@ def DeepSqueeze(pretrained=False, **kwargs):
     model = DeepSqueeze_(35)
 
     checkpoint = 'https://github.com/Sid1057/self-driving-cars-utils/blob/master/semantic/DeepSqueeze/DeepLab_v3_squeeze11_kitti_classes_iou_mean012_iou_max60.pth'
-    model.load_state_dict(torch.hub.load_state_dict_from_url(checkpoint, progress=False))
+    model.load_state_dict(hub.load_state_dict_from_url(checkpoint, progress=False))
 
     return model
